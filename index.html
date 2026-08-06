@@ -1,0 +1,629 @@
+<!--
+========================================================
+SISTEMA DE GESTÃO DE CLIENTES - index.html
+Desenvolvido com HTML5 e CSS3 puros
+Demonstração de HTML semântico, acessibilidade e responsividade
+========================================================
+-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Metadados essenciais para codificação e responsividade -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema de Gestão de Clientes - Interface administrativa para cadastro e gerenciamento de clientes">
+    <meta name="author" content="Desenvolvedor Front-End Sênior">
+    <meta name="theme-color" content="#1a1f36">
+    <title>ClientManager Pro | Sistema de Gestão de Clientes</title>
+    <!-- Vinculação da folha de estilos externa -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--
+    ========================================================
+    CABEÇALHO PRINCIPAL DO SISTEMA
+    Contém a logo, nome do sistema e barra de navegação superior
+    ========================================================
+    -->
+    <header class="header-principal" role="banner" aria-label="Cabeçalho do sistema">
+        <div class="header-container">
+            <!--
+            Figure utilizada para envolver a logo com sua legenda,
+            garantindo semântica adequada para conteúdo visual
+            -->
+            <figure class="logo-wrapper">
+                <!-- Logo fictícia usando CSS como ícone SVG inline -->
+                <div class="logo-icone" aria-hidden="true">
+                    <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="44" height="44" rx="10" fill="#3b82f6"/>
+                        <path d="M14 22L20 28L30 16" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="22" cy="22" r="20" stroke="white" stroke-width="1.5" fill="none" opacity="0.4"/>
+                    </svg>
+                </div>
+                <figcaption class="logo-legenda">
+                    <span class="nome-sistema">ClientManager</span>
+                    <span class="versao-sistema">Pro</span>
+                </figcaption>
+            </figure>
+
+            <!-- Área de busca rápida e ações do header -->
+            <div class="header-acoes" role="search" aria-label="Busca rápida">
+                <div class="busca-wrapper">
+                    <label for="busca-rapida" class="sr-only">Buscar cliente</label>
+                    <input type="search" id="busca-rapida" class="input-busca-rapida" placeholder="Buscar cliente...">
+                    <svg class="icone-busca" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="M21 21l-4.35-4.35"/>
+                    </svg>
+                </div>
+                <!-- Indicador de notificações -->
+                <button class="btn-notificacao" aria-label="Notificações - 3 novas">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                        <path d="M13.73 21a2 2 0 01-3.46 0"/>
+                    </svg>
+                    <span class="badge-notificacao" aria-label="3 notificações não lidas">3</span>
+                </button>
+                <!-- Avatar do usuário logado -->
+                <div class="avatar-usuario" aria-label="Usuário logado: Administrador">
+                    <span class="iniciais-avatar">AD</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!--
+    ========================================================
+    BARRA DE NAVEGAÇÃO PRINCIPAL
+    Menu de navegação com links para as seções do sistema
+    ========================================================
+    -->
+    <nav class="nav-principal" role="navigation" aria-label="Navegação principal do sistema">
+        <ul class="menu-lista">
+            <li class="menu-item">
+                <a href="#" class="menu-link ativo" aria-current="page">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <rect x="3" y="3" width="7" height="7"/>
+                        <rect x="14" y="3" width="7" height="7"/>
+                        <rect x="14" y="14" width="7" height="7"/>
+                        <rect x="3" y="14" width="7" height="7"/>
+                    </svg>
+                    Dashboard
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 010 7.75"/>
+                    </svg>
+                    Clientes
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                        <polyline points="10 9 9 9 8 9"/>
+                    </svg>
+                    Relatórios
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>
+                    </svg>
+                    Configurações
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/>
+                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                    Ajuda
+                </a>
+            </li>
+        </ul>
+        <!-- Indicador de navegação mobile (hamburguer) - funcional apenas visual -->
+        <button class="btn-menu-mobile" aria-label="Abrir menu de navegação" aria-expanded="false">
+            <span class="hamburguer-linha"></span>
+            <span class="hamburguer-linha"></span>
+            <span class="hamburguer-linha"></span>
+        </button>
+    </nav>
+
+    <!--
+    ========================================================
+    CONTEÚDO PRINCIPAL
+    Utiliza CSS Grid para organizar a área de conteúdo e o aside
+    ========================================================
+    -->
+    <main class="conteudo-principal" role="main" aria-label="Conteúdo principal do sistema">
+        <!--
+        Área de conteúdo com duas seções distintas:
+        1. Cadastro de Cliente (formulário)
+        2. Tabela de Clientes
+        -->
+        <div class="area-conteudo">
+            <!--
+            ====================================================
+            SEÇÃO 1: FORMULÁRIO DE CADASTRO DE CLIENTE
+            Utiliza fieldset para agrupar campos relacionados
+            ====================================================
+            -->
+            <section class="secao-cadastro" aria-labelledby="titulo-cadastro">
+                <article class="card card-formulario">
+                    <div class="card-cabecalho">
+                        <h2 id="titulo-cadastro" class="card-titulo">Cadastro de Cliente</h2>
+                        <p class="card-descricao">Preencha os dados abaixo para registrar um novo cliente no sistema.</p>
+                    </div>
+                    <div class="card-corpo">
+                        <form class="form-cadastro" action="#" method="post" novalidate aria-label="Formulário de cadastro de cliente">
+                            <!--
+                            FIELDSET: Agrupa os dados pessoais do cliente
+                            LEGEND fornece um título descritivo para o grupo de campos
+                            -->
+                            <fieldset class="fieldset-grupo">
+                                <legend class="fieldset-legenda">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                                        <circle cx="12" cy="7" r="4"/>
+                                    </svg>
+                                    Dados Pessoais
+                                </legend>
+                                <div class="grid-formulario">
+                                    <!-- Nome Completo -->
+                                    <div class="campo-form campo-largo">
+                                        <label for="nome-completo" class="label-campo">Nome Completo <span class="required" aria-hidden="true">*</span></label>
+                                        <input type="text" id="nome-completo" name="nome_completo" class="input-campo" placeholder="Ex: João da Silva Santos" required autocomplete="name" aria-required="true">
+                                    </div>
+                                    <!-- CPF -->
+                                    <div class="campo-form">
+                                        <label for="cpf" class="label-campo">CPF <span class="required" aria-hidden="true">*</span></label>
+                                        <input type="text" id="cpf" name="cpf" class="input-campo" placeholder="000.000.000-00" required autocomplete="off" aria-required="true">
+                                    </div>
+                                    <!-- Data de Nascimento -->
+                                    <div class="campo-form">
+                                        <label for="data-nascimento" class="label-campo">Data de Nascimento</label>
+                                        <input type="date" id="data-nascimento" name="data_nascimento" class="input-campo">
+                                    </div>
+                                    <!-- Email -->
+                                    <div class="campo-form">
+                                        <label for="email" class="label-campo">Email <span class="required" aria-hidden="true">*</span></label>
+                                        <input type="email" id="email" name="email" class="input-campo" placeholder="exemplo@dominio.com" required autocomplete="email" aria-required="true">
+                                    </div>
+                                    <!-- Telefone -->
+                                    <div class="campo-form">
+                                        <label for="telefone" class="label-campo">Telefone <span class="required" aria-hidden="true">*</span></label>
+                                        <input type="tel" id="telefone" name="telefone" class="input-campo" placeholder="(00) 00000-0000" required autocomplete="tel" aria-required="true">
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <!-- FIELDSET: Agrupa dados de endereço -->
+                            <fieldset class="fieldset-grupo">
+                                <legend class="fieldset-legenda">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                        <circle cx="12" cy="10" r="3"/>
+                                    </svg>
+                                    Endereço
+                                </legend>
+                                <div class="grid-formulario">
+                                    <!-- Endereço -->
+                                    <div class="campo-form campo-largo">
+                                        <label for="endereco" class="label-campo">Endereço</label>
+                                        <input type="text" id="endereco" name="endereco" class="input-campo" placeholder="Rua, Avenida, número" autocomplete="street-address">
+                                    </div>
+                                    <!-- Cidade -->
+                                    <div class="campo-form">
+                                        <label for="cidade" class="label-campo">Cidade</label>
+                                        <input type="text" id="cidade" name="cidade" class="input-campo" placeholder="Nome da cidade" autocomplete="address-level2">
+                                    </div>
+                                    <!-- Estado -->
+                                    <div class="campo-form">
+                                        <label for="estado" class="label-campo">Estado</label>
+                                        <select id="estado" name="estado" class="select-campo" autocomplete="address-level1">
+                                            <option value="" disabled selected>Selecione o estado</option>
+                                            <option value="AC">Acre</option>
+                                            <option value="AL">Alagoas</option>
+                                            <option value="AP">Amapá</option>
+                                            <option value="AM">Amazonas</option>
+                                            <option value="BA">Bahia</option>
+                                            <option value="CE">Ceará</option>
+                                            <option value="DF">Distrito Federal</option>
+                                            <option value="ES">Espírito Santo</option>
+                                            <option value="GO">Goiás</option>
+                                            <option value="MA">Maranhão</option>
+                                            <option value="MT">Mato Grosso</option>
+                                            <option value="MS">Mato Grosso do Sul</option>
+                                            <option value="MG">Minas Gerais</option>
+                                            <option value="PA">Pará</option>
+                                            <option value="PB">Paraíba</option>
+                                            <option value="PR">Paraná</option>
+                                            <option value="PE">Pernambuco</option>
+                                            <option value="PI">Piauí</option>
+                                            <option value="RJ">Rio de Janeiro</option>
+                                            <option value="RN">Rio Grande do Norte</option>
+                                            <option value="RS">Rio Grande do Sul</option>
+                                            <option value="RO">Rondônia</option>
+                                            <option value="RR">Roraima</option>
+                                            <option value="SC">Santa Catarina</option>
+                                            <option value="SP">São Paulo</option>
+                                            <option value="SE">Sergipe</option>
+                                            <option value="TO">Tocantins</option>
+                                        </select>
+                                    </div>
+                                    <!-- CEP -->
+                                    <div class="campo-form">
+                                        <label for="cep" class="label-campo">CEP</label>
+                                        <input type="text" id="cep" name="cep" class="input-campo" placeholder="00000-000" autocomplete="postal-code">
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <!-- FIELDSET: Agrupa tipo de cliente e observações -->
+                            <fieldset class="fieldset-grupo">
+                                <legend class="fieldset-legenda">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                        <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
+                                    </svg>
+                                    Classificação
+                                </legend>
+                                <div class="grid-formulario">
+                                    <!-- Tipo de Cliente -->
+                                    <div class="campo-form">
+                                        <label for="tipo-cliente" class="label-campo">Tipo de Cliente <span class="required" aria-hidden="true">*</span></label>
+                                        <select id="tipo-cliente" name="tipo_cliente" class="select-campo" required aria-required="true">
+                                            <option value="" disabled selected>Selecione o tipo</option>
+                                            <option value="pf">Pessoa Física</option>
+                                            <option value="pj">Pessoa Jurídica</option>
+                                        </select>
+                                    </div>
+                                    <!-- Observações - ocupa linha completa -->
+                                    <div class="campo-form campo-largo">
+                                        <label for="observacoes" class="label-campo">Observações</label>
+                                        <textarea id="observacoes" name="observacoes" class="textarea-campo" placeholder="Informações adicionais sobre o cliente..." rows="3" maxlength="500" aria-describedby="contador-obs"></textarea>
+                                        <span id="contador-obs" class="contador-caracteres">Máximo 500 caracteres</span>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <!-- Botões de ação do formulário -->
+                            <div class="botoes-formulario" role="group" aria-label="Ações do formulário">
+                                <button type="submit" class="btn btn-salvar">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/>
+                                        <polyline points="17 21 17 13 7 13 7 21"/>
+                                        <polyline points="7 3 7 8 15 8"/>
+                                    </svg>
+                                    Salvar
+                                </button>
+                                <button type="reset" class="btn btn-limpar">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <polyline points="1 4 1 10 7 10"/>
+                                        <path d="M3.51 15a9 9 0 102.13-9.36L1 10"/>
+                                    </svg>
+                                    Limpar
+                                </button>
+                                <button type="button" class="btn btn-cancelar">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <line x1="18" y1="6" x2="6" y2="18"/>
+                                        <line x1="6" y1="6" x2="18" y2="18"/>
+                                    </svg>
+                                    Cancelar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </article>
+            </section>
+
+            <!--
+            ====================================================
+            SEÇÃO 2: TABELA DE CLIENTES
+            Demonstração de tabela semântica com thead, tbody e tfoot
+            ====================================================
+            -->
+            <section class="secao-tabela" aria-labelledby="titulo-tabela">
+                <article class="card card-tabela">
+                    <div class="card-cabecalho">
+                        <h2 id="titulo-tabela" class="card-titulo">Clientes Cadastrados</h2>
+                        <div class="acoes-tabela">
+                            <div class="filtro-tabela">
+                                <label for="filtro-status" class="sr-only">Filtrar por status</label>
+                                <select id="filtro-status" class="select-pequeno" aria-label="Filtrar clientes por status">
+                                    <option value="todos">Todos os status</option>
+                                    <option value="ativo">Ativos</option>
+                                    <option value="inativo">Inativos</option>
+                                </select>
+                            </div>
+                            <span class="contagem-registros" aria-live="polite">Exibindo 10 registros</span>
+                        </div>
+                    </div>
+                    <div class="card-corpo tabela-wrapper">
+                        <!--
+                        TABELA SEMÂNTICA
+                        thead: cabeçalho da tabela com os títulos das colunas
+                        tbody: corpo com os dados dos clientes
+                        tfoot: rodapé com informações resumidas
+                        -->
+                        <table class="tabela-clientes" aria-label="Lista de clientes cadastrados" role="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="col-id">ID</th>
+                                    <th scope="col" class="col-nome">Nome</th>
+                                    <th scope="col" class="col-email">Email</th>
+                                    <th scope="col" class="col-telefone">Telefone</th>
+                                    <th scope="col" class="col-cidade">Cidade</th>
+                                    <th scope="col" class="col-status">Status</th>
+                                    <th scope="col" class="col-acoes">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Cliente 1 -->
+                                <tr>
+                                    <td class="col-id" data-label="ID">001</td>
+                                    <td class="col-nome" data-label="Nome">Ana Silva</td>
+                                    <td class="col-email" data-label="Email">ana.silva@email.com</td>
+                                    <td class="col-telefone" data-label="Telefone">(11) 98765-4321</td>
+                                    <td class="col-cidade" data-label="Cidade">São Paulo</td>
+                                    <td class="col-status" data-label="Status"><span class="badge-status status-ativo">Ativo</span></td>
+                                    <td class="col-acoes" data-label="Ações">
+                                        <button class="btn-acao btn-editar" aria-label="Editar cliente Ana Silva">Editar</button>
+                                        <button class="btn-acao btn-excluir" aria-label="Excluir cliente Ana Silva">Excluir</button>
+                                    </td>
+                                </tr>
+                                <!-- Cliente 2 -->
+                                <tr>
+                                    <td class="col-id" data-label="ID">002</td>
+                                    <td class="col-nome" data-label="Nome">Carlos Oliveira</td>
+                                    <td class="col-email" data-label="Email">carlos.oliveira@email.com</td>
+                                    <td class="col-telefone" data-label="Telefone">(21) 97654-3210</td>
+                                    <td class="col-cidade" data-label="Cidade">Rio de Janeiro</td>
+                                    <td class="col-status" data-label="Status"><span class="badge-status status-ativo">Ativo</span></td>
+                                    <td class="col-acoes" data-label="Ações">
+                                        <button class="btn-acao btn-editar" aria-label="Editar cliente Carlos Oliveira">Editar</button>
+                                        <button class="btn-acao btn-excluir" aria-label="Excluir cliente Carlos Oliveira">Excluir</button>
+                                    </td>
+                                </tr>
+                                <!-- Cliente 3 -->
+                                <tr>
+                                    <td class="col-id" data-label="ID">003</td>
+                                    <td class="col-nome" data-label="Nome">Maria Santos</td>
+                                    <td class="col-email" data-label="Email">maria.santos@email.com</td>
+                                    <td class="col-telefone" data-label="Telefone">(31) 96543-2109</td>
+                                    <td class="col-cidade" data-label="Cidade">Belo Horizonte</td>
+                                    <td class="col-status" data-label="Status"><span class="badge-status status-ativo">Ativo</span></td>
+                                    <td class="col-acoes" data-label="Ações">
+                                        <button class="btn-acao btn-editar" aria-label="Editar cliente Maria Santos">Editar</button>
+                                        <button class="btn-acao btn-excluir" aria-label="Excluir cliente Maria Santos">Excluir</button>
+                                    </td>
+                                </tr>
+                                <!-- Cliente 4 -->
+                                <tr>
+                                    <td class="col-id" data-label="ID">004</td>
+                                    <td class="col-nome" data-label="Nome">João Pereira</td>
+                                    <td class="col-email" data-label="Email">joao.pereira@email.com</td>
+                                    <td class="col-telefone" data-label="Telefone">(41) 95432-1098</td>
+                                    <td class="col-cidade" data-label="Cidade">Curitiba</td>
+                                    <td class="col-status" data-label="Status"><span class="badge-status status-inativo">Inativo</span></td>
+                                    <td class="col-acoes" data-label="Ações">
+                                        <button class="btn-acao btn-editar" aria-label="Editar cliente João Pereira">Editar</button>
+                                        <button class="btn-acao btn-excluir" aria-label="Excluir cliente João Pereira">Excluir</button>
+                                    </td>
+                                </tr>
+                                <!-- Cliente 5 -->
+                                <tr>
+                                    <td class="col-id" data-label="ID">005</td>
+                                    <td class="col-nome" data-label="Nome">Fernanda Costa</td>
+                                    <td class="col-email" data-label="Email">fernanda.costa@email.com</td>
+                                    <td class="col-telefone" data-label="Telefone">(51) 94321-0987</td>
+                                    <td class="col-cidade" data-label="Cidade">Porto Alegre</td>
+                                    <td class="col-status" data-label="Status"><span class="badge-status status-ativo">Ativo</span></td>
+                                    <td class="col-acoes" data-label="Ações">
+                                        <button class="btn-acao btn-editar" aria-label="Editar cliente Fernanda Costa">Editar</button>
+                                        <button class="btn-acao btn-excluir" aria-label="Excluir cliente Fernanda Costa">Excluir</button>
+                                    </td>
+                                </tr>
+                                <!-- Cliente 6 -->
+                                <tr>
+                                    <td class="col-id" data-label="ID">006</td>
+                                    <td class="col-nome" data-label="Nome">Ricardo Almeida</td>
+                                    <td class="col-email" data-label="Email">ricardo.almeida@email.com</td>
+                                    <td class="col-telefone" data-label="Telefone">(61) 93210-9876</td>
+                                    <td class="col-cidade" data-label="Cidade">Brasília</td>
+                                    <td class="col-status" data-label="Status"><span class="badge-status status-ativo">Ativo</span></td>
+                                    <td class="col-acoes" data-label="Ações">
+                                        <button class="btn-acao btn-editar" aria-label="Editar cliente Ricardo Almeida">Editar</button>
+                                        <button class="btn-acao btn-excluir" aria-label="Excluir cliente Ricardo Almeida">Excluir</button>
+                                    </td>
+                                </tr>
+                                <!-- Cliente 7 -->
+                                <tr>
+                                    <td class="col-id" data-label="ID">007</td>
+                                    <td class="col-nome" data-label="Nome">Juliana Lima</td>
+                                    <td class="col-email" data-label="Email">juliana.lima@email.com</td>
+                                    <td class="col-telefone" data-label="Telefone">(71) 92109-8765</td>
+                                    <td class="col-cidade" data-label="Cidade">Salvador</td>
+                                    <td class="col-status" data-label="Status"><span class="badge-status status-ativo">Ativo</span></td>
+                                    <td class="col-acoes" data-label="Ações">
+                                        <button class="btn-acao btn-editar" aria-label="Editar cliente Juliana Lima">Editar</button>
+                                        <button class="btn-acao btn-excluir" aria-label="Excluir cliente Juliana Lima">Excluir</button>
+                                    </td>
+                                </tr>
+                                <!-- Cliente 8 -->
+                                <tr>
+                                    <td class="col-id" data-label="ID">008</td>
+                                    <td class="col-nome" data-label="Nome">Marcos Souza</td>
+                                    <td class="col-email" data-label="Email">marcos.souza@email.com</td>
+                                    <td class="col-telefone" data-label="Telefone">(81) 91098-7654</td>
+                                    <td class="col-cidade" data-label="Cidade">Recife</td>
+                                    <td class="col-status" data-label="Status"><span class="badge-status status-inativo">Inativo</span></td>
+                                    <td class="col-acoes" data-label="Ações">
+                                        <button class="btn-acao btn-editar" aria-label="Editar cliente Marcos Souza">Editar</button>
+                                        <button class="btn-acao btn-excluir" aria-label="Excluir cliente Marcos Souza">Excluir</button>
+                                    </td>
+                                </tr>
+                                <!-- Cliente 9 -->
+                                <tr>
+                                    <td class="col-id" data-label="ID">009</td>
+                                    <td class="col-nome" data-label="Nome">Patricia Ferreira</td>
+                                    <td class="col-email" data-label="Email">patricia.ferreira@email.com</td>
+                                    <td class="col-telefone" data-label="Telefone">(91) 90987-6543</td>
+                                    <td class="col-cidade" data-label="Cidade">Belém</td>
+                                    <td class="col-status" data-label="Status"><span class="badge-status status-ativo">Ativo</span></td>
+                                    <td class="col-acoes" data-label="Ações">
+                                        <button class="btn-acao btn-editar" aria-label="Editar cliente Patricia Ferreira">Editar</button>
+                                        <button class="btn-acao btn-excluir" aria-label="Excluir cliente Patricia Ferreira">Excluir</button>
+                                    </td>
+                                </tr>
+                                <!-- Cliente 10 -->
+                                <tr>
+                                    <td class="col-id" data-label="ID">010</td>
+                                    <td class="col-nome" data-label="Nome">Lucas Rodrigues</td>
+                                    <td class="col-email" data-label="Email">lucas.rodrigues@email.com</td>
+                                    <td class="col-telefone" data-label="Telefone">(48) 89876-5432</td>
+                                    <td class="col-cidade" data-label="Cidade">Florianópolis</td>
+                                    <td class="col-status" data-label="Status"><span class="badge-status status-ativo">Ativo</span></td>
+                                    <td class="col-acoes" data-label="Ações">
+                                        <button class="btn-acao btn-editar" aria-label="Editar cliente Lucas Rodrigues">Editar</button>
+                                        <button class="btn-acao btn-excluir" aria-label="Excluir cliente Lucas Rodrigues">Excluir</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <!-- tfoot: Rodapé da tabela com informações sumarizadas -->
+                            <tfoot>
+                                <tr>
+                                    <td colspan="7" class="tabela-resumo">
+                                        <span>Total de registros: <strong>10</strong></span>
+                                        <span>Clientes ativos: <strong>8</strong></span>
+                                        <span>Clientes inativos: <strong>2</strong></span>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!--
+        ========================================================
+        ASIDE - PAINEL LATERAL
+        Contém informações complementares como últimos cadastros,
+        avisos do sistema e resumo de clientes
+        ========================================================
+        -->
+        <aside class="aside-painel" role="complementary" aria-label="Painel lateral de informações">
+            <!-- Últimos Cadastros -->
+            <article class="card card-aside" aria-labelledby="titulo-ultimos">
+                <h3 id="titulo-ultimos" class="aside-titulo">Últimos Cadastros</h3>
+                <ul class="lista-ultimos" role="list">
+                    <li class="item-ultimo">
+                        <div class="avatar-miniatura">LR</div>
+                        <div class="info-ultimo">
+                            <strong>Lucas Rodrigues</strong>
+                            <span class="data-cadastro">Cadastrado em 05/08/2026</span>
+                        </div>
+                    </li>
+                    <li class="item-ultimo">
+                        <div class="avatar-miniatura">PF</div>
+                        <div class="info-ultimo">
+                            <strong>Patricia Ferreira</strong>
+                            <span class="data-cadastro">Cadastrada em 03/08/2026</span>
+                        </div>
+                    </li>
+                    <li class="item-ultimo">
+                        <div class="avatar-miniatura">MS</div>
+                        <div class="info-ultimo">
+                            <strong>Marcos Souza</strong>
+                            <span class="data-cadastro">Cadastrado em 01/08/2026</span>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+
+            <!-- Avisos do Sistema -->
+            <article class="card card-aside" aria-labelledby="titulo-avisos">
+                <h3 id="titulo-avisos" class="aside-titulo">Avisos do Sistema</h3>
+                <div class="lista-avisos" role="list">
+                    <div class="aviso-item aviso-info" role="listitem">
+                        <span class="icone-aviso">ℹ️</span>
+                        <p>Backup automático agendado para hoje às 23h.</p>
+                    </div>
+                    <div class="aviso-item aviso-alerta" role="listitem">
+                        <span class="icone-aviso">⚠️</span>
+                        <p>2 clientes com cadastro incompleto detectados.</p>
+                    </div>
+                    <div class="aviso-item aviso-sucesso" role="listitem">
+                        <span class="icone-aviso">✅</span>
+                        <p>Atualização do sistema concluída com sucesso.</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Resumo do Sistema -->
+            <article class="card card-aside card-resumo" aria-labelledby="titulo-resumo">
+                <h3 id="titulo-resumo" class="aside-titulo">Resumo</h3>
+                <!-- Figure com figcaption para apresentar dados resumidos visualmente -->
+                <figure class="resumo-figure">
+                    <div class="resumo-grid">
+                        <div class="resumo-item">
+                            <span class="resumo-valor">10</span>
+                            <span class="resumo-rotulo">Total de Clientes</span>
+                        </div>
+                        <div class="resumo-item resumo-destaque-ativo">
+                            <span class="resumo-valor">8</span>
+                            <span class="resumo-rotulo">Clientes Ativos</span>
+                        </div>
+                        <div class="resumo-item resumo-destaque-inativo">
+                            <span class="resumo-valor">2</span>
+                            <span class="resumo-rotulo">Clientes Inativos</span>
+                        </div>
+                    </div>
+                    <figcaption class="resumo-legenda">
+                        Dados atualizados em tempo real • Agosto/2026
+                    </figcaption>
+                </figure>
+            </article>
+        </aside>
+    </main>
+
+    <!--
+    ========================================================
+    RODAPÉ DO SISTEMA
+    Contém informações de copyright, nome do sistema e ano
+    ========================================================
+    -->
+    <footer class="footer-principal" role="contentinfo" aria-label="Rodapé do sistema">
+        <div class="footer-container">
+            <div class="footer-info">
+                <p class="footer-nome-sistema">ClientManager Pro</p>
+                <p class="footer-copyright">
+                    &copy; <span id="ano-atual">2026</span> ClientManager Pro. Todos os direitos reservados.
+                </p>
+            </div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Política de Privacidade</a>
+                <span class="footer-separador" aria-hidden="true">|</span>
+                <a href="#" class="footer-link">Termos de Uso</a>
+                <span class="footer-separador" aria-hidden="true">|</span>
+                <a href="#" class="footer-link">Suporte Técnico</a>
+            </div>
+            <p class="footer-versao">Versão 2.4.1</p>
+        </div>
+    </footer>
+</body>
+</html>
