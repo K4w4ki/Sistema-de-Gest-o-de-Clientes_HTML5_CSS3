@@ -80,4 +80,4 @@ Projeto desenvolvido como atividade acadêmica da disciplina de Desenvolvimento 
 
 ## Observações
 
-Este projeto possui apenas a interface da aplicação, sem integração com banco de dados ou JavaScript. Seu objetivo é demonstrar a utilização de HTML5 e CSS3 na construção de uma interface organizada, responsiva e acessível.
+Este projeto não possui integração com banco de dados nem backend real — a submissão do formulário é simulada localmente. Seu objetivo é demonstrar a utilização de HTML5, CSS3 e JavaScript puro na construção de uma interface organizada, responsiva, acessível e dinâmica.
