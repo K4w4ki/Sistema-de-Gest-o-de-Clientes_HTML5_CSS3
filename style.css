@@ -1672,3 +1672,60 @@
            color: black;
        }
    }
+/* ============================================================
+   TRABALHO 2 - VALIDAÇÕES DINÂMICAS (JavaScript)
+   Estilos para estados de campo válido/inválido, mensagens
+   e indicador de status do formulário. Utiliza as variáveis
+   de cor já existentes no projeto (sucesso e erro).
+   ============================================================ */
+
+.campo-invalido {
+    border-color: var(--cor-erro) !important;
+    box-shadow: 0 0 0 3px var(--cor-erro-clara) !important;
+}
+
+.campo-valido {
+    border-color: var(--cor-sucesso) !important;
+    box-shadow: 0 0 0 3px var(--cor-sucesso-clara) !important;
+}
+
+.mensagem-erro {
+    display: block;
+    color: var(--cor-erro);
+    font-size: var(--fs-xs);
+    margin-top: 2px;
+    min-height: 1em;
+}
+
+.mensagem-erro.mensagem-sucesso {
+    color: var(--cor-sucesso);
+}
+
+.mensagem-erro.mensagem-info {
+    color: var(--cor-texto-claro);
+    font-style: italic;
+}
+
+.status-formulario {
+    padding: 10px 14px;
+    border-radius: var(--borda-raio);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    margin-bottom: var(--esp-base);
+}
+
+.status-formulario:empty {
+    display: none;
+}
+
+.status-formulario.status-sucesso {
+    color: var(--cor-sucesso);
+    background-color: var(--cor-sucesso-clara);
+    border: 1px solid var(--cor-sucesso);
+}
+
+.status-formulario.status-erro {
+    color: var(--cor-erro);
+    background-color: var(--cor-erro-clara);
+    border: 1px solid var(--cor-erro);
+}
